@@ -22,6 +22,6 @@ class ReceiptCreateView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         item = form.save(commit=False)
-        item.user_property = self.request.user
+        item.purchaser = self.request.user
         item.save()
         return redirect("home")

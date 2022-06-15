@@ -6,6 +6,18 @@
     </head>
     <body>
         <main>
+            <header>
+                <nav>
+                    <ul>
+                        {% if user.is_authenticated %}
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                        {% else %}
+                        <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                        <li><a href="{% url 'login' %}">Login</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </header>
             <h1>My Receipts</h1>
             <table>
                 <thead>

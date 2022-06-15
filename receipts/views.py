@@ -10,10 +10,9 @@ class ReceiptListView(LoginRequiredMixin, ListView):
     model = Receipt
     template_name = "receipts/list.html"
     context_object_name = "receiptlist"
-    fields = ["vendor", "total", "tax", "date", "category", "account"]
 
     def get_queryset(self):
-        return Receipt.objects.filter(user=self.request.user)
+        return Receipt.objects.filter(purchaser=self.request.user)
 
 
 class ReceiptCreateView(LoginRequiredMixin, CreateView):
@@ -26,4 +25,3 @@ class ReceiptCreateView(LoginRequiredMixin, CreateView):
         item.user_property = self.request.user
         item.save()
         return redirect("home")
-        

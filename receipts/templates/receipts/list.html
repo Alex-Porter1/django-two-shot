@@ -1,50 +1,47 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 
-<html>
-    <head>
-        <title></title>
-    </head>
-    <body>
-        <main>
+        {% comment %} <main>
             <header>
                 <nav>
                     <ul>
                         {% if user.is_authenticated %}
                         <li><a href="{% url 'logout' %}">Logout</a></li>
                         <li><a href="{% url 'create_category' %}">Create Expense Category</a></li>
+                        <li><a href="{% url 'create_account' %}">Create Account</a></li>
                         {% else %}
                         <li><a href="{% url 'signup' %}">Sign Up</a></li>
                         <li><a href="{% url 'login' %}">Login</a></li>
                         {% endif %}
                     </ul>
                 </nav>
-            </header>
-            <h1>My Receipts</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Vendor</th>
-                        <th>Total</th>
-                        <th>Tax</th>
-                        <th>Due Date</th>
-                        <th>Category</th>
-                        <th>Account</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for receipt in receiptlist  %}
-                    <tr>
-                        <td>{{ receipt.vendor }}</td>
-                        <td>{{ receipt.total }}</td>
-                        <td>{{ receipt.tax }}</td>
-                        <td>{{ receipt.date|date:"m/d/YY"}}</td>
-                        <td>{{ receipt.category.name }}</td>
-                        <td>{{ receipt.account.name }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </main>
-    </body>
-</html>
+            </header> {% endcomment %}
+{% block content %}
+<main>
+    <h1>My Receipts</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Vendor</th>
+                <th>Total</th>
+                <th>Tax</th>
+                <th>Due Date</th>
+                <th>Category</th>
+                <th>Account</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for receipt in receiptlist  %}
+            <tr>
+                <td>{{ receipt.vendor }}</td>
+                <td>{{ receipt.total }}</td>
+                <td>{{ receipt.tax }}</td>
+                <td>{{ receipt.date|date:"m/d/YY"}}</td>
+                <td>{{ receipt.category.name }}</td>
+                <td>{{ receipt.account.name }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</main>
+{% endblock content %}
 

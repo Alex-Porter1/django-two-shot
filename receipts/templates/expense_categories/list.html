@@ -1,6 +1,5 @@
-<!DOCTYPE html>
-
-<html>
+{% extends 'base.html' %}
+<!-- <html>
     <head>
         <title></title>
     </head>
@@ -9,25 +8,27 @@
             <header>
                 <ul>
                     <li><a href="{% url 'create_category' %}">Create Expense Category</a></li>
+                    <li><a href="{% url 'create_account' %}">Create Account</a></li>
                 </ul>
-            </header>
-            <h1>Expense Categories</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Number of Receipts</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for category in expensecategory %}
-                    <tr>
-                        <td>{{ category.name }}</td>
-                        <td>{{ category.receipts.all|length }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </main>
-    </body>
-</html>
+            </header> -->
+{% block content %}
+<main>
+    <h1>Expense Categories</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Number of Receipts</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for category in expensecategory %}
+            <tr>
+                <td>{{ category.name }}</td>
+                <td>{{ category.receipts.all|length }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</main>
+{% endblock content %}

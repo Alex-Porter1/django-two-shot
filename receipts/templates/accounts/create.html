@@ -3,12 +3,12 @@
 {% block content %}
 <main>
     <div>
-        <h1>Create Category</h1>
+        <h1>Create Account</h1>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <button>Create</button>
         </form>
     </div>
-</main>
+<main>
 {% endblock content %}

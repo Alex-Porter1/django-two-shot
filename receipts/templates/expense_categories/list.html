@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <main>
+            <h1>Expense Categories</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Number of Receipts</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for category in expensecategory %}
+                    <tr>
+                        <td>{{ category.name }}</td>
+                        <td>{{ category.receipts.all|length }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </main>
+    </body>
+</html>
